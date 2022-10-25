@@ -1,12 +1,12 @@
 ---
 
-
 - name: Install php7.4
   apt:
     name: php7.4
     force_apt_get: yes
     update_cache: yes
     state: present
+    install_recommends: no
 
 - name: Install php7.4-mysql
   apt:

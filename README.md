@@ -50,7 +50,7 @@ ansible-galaxy install nginxinc.nginx_unit
 ### インストール
 
 ```
-ansible-playbook -i hosts -l host1 nunit-wp-setup.yaml
+ansible-playbook -i inventory/hosts -l host1 nunit-wp-setup.yaml
 ```
 
 ## 2. NGINX Plus + Wordpress のインストール
@@ -72,19 +72,19 @@ ansible-galaxy collection install nginxinc.nginx_core
 ### インストール
 
 ```
-ansible-playbook -i hosts -l host2 nplus-wp-setup.yaml
+ansible-playbook -i inventory/hosts -l host2 web-servers/nplus-wp-setup.yaml
 ```
 
 ## 3. Apache + Wordpress のインストール
 
 ```
-ansible-playbook -i hosts -l host3 apache-wp-setup.yaml
+ansible-playbook -i inventory/hosts -l host3 web-servers/apache-wp-setup.yaml
 ```
 
 ## 4. Locust の実行
 
 ```
-ansible-playbook -i hosts -l locust start-locust.yaml
+ansible-playbook -i inventory/hosts -l locust performance-components/start-locust.yaml
 ```
 
 ## 5. Grafana + Prometheus の実行
@@ -92,13 +92,13 @@ ansible-playbook -i hosts -l locust start-locust.yaml
 ### Grafana + Prometheus の実行
 
 ```
-ansible-playbook -i hosts -l monitor start-monitor.yaml
+ansible-playbook -i inventory/hosts -l monitor performance-components/start-monitor.yaml
 ```
 
 ### 各HostにNode Exporterの実行
 
 ```
-ansible-playbook -i hosts start-node-exporter.yaml  
+ansible-playbook -i inventory/hosts performance-components/start-node-exporter.yaml  
 ```
 
 ## 通信の実行

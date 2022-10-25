@@ -7,5 +7,4 @@ class QuickstartUser(HttpUser):
     @task
     def hello_world(self):
         self.client.get("/html/index.html")
-import time
-from locust import HttpUser, task, between
+

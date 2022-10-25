@@ -1,4 +1,6 @@
 ---
 
 - name: Git clone for NGINX performance 
-  shell: "git clone https://github.com/BeF5/f5j-nginx-performance-lab.git"
+  ansible.builtin.git:
+    repo: https://github.com/BeF5/f5j-nginx-performance-lab.git
+    dest: ~/f5j-nginx-performance-lab/

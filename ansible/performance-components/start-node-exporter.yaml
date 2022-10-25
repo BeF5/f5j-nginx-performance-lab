@@ -1,8 +1,8 @@
 ---
 - name: Start Node Exporter
   hosts: all
-  gather_facts: no
+  gather_facts: yes
   become: yes
-    tasks:
-    - import_tasks: common/git-clone.yaml
-    - import_tasks: node-exporter/start-node-exporter.yaml
+  tasks:
+  - import_tasks: common/git-clone.yaml
+  - import_tasks: node-exporter/start-node-exporter.yaml

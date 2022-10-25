@@ -1,10 +1,10 @@
 ---
 - name: Start Locust
   hosts: all
-  gather_facts: no
+  gather_facts: yes
   become: yes
-    tasks:
-    - import_tasks: common/update-ubuntu.yaml
-    - import_tasks: common/install-docker.yaml
-    - import_tasks: common/git-clone.yaml
-    - import_tasks: locust/start-locust.yaml
+  tasks:
+  - import_tasks: common/update-ubuntu.yaml
+  - import_tasks: common/install-docker.yaml
+  - import_tasks: common/git-clone.yaml
+  - import_tasks: locust/start-locust.yaml

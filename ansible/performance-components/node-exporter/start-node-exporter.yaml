@@ -2,8 +2,8 @@
 - name: Start Node Exporter
   shell: |
     sudo docker volume create metrics_data
-    sudo docker-compose -f ~/node-exporter/docker-compose-node-exporter.yaml  up -d
+    sudo docker-compose -f node-exporter/docker-compose-node-exporter.yaml  up -d
   args:
-    chdir: ~/f5j-nginx-performance/docker-compose
+    chdir: ~/f5j-nginx-performance-lab/docker-compose
 
 

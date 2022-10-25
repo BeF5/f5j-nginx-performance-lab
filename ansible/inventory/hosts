@@ -18,6 +18,3 @@ all:
     host4:
       hosts:
         10.1.1.9:
-    host5:
-      hosts:
-        10.1.1.10:

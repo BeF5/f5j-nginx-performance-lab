@@ -3,6 +3,6 @@
   shell: |
     docker volume create metrics_data
     docker volume create grafana_data
-    docker-compose -f ~/monitor/docker-compose-grafana-prom.yaml up -d
+    docker-compose -f monitor/docker-compose-grafana-prom.yaml up -d
   args:
-    chdir: ~/f5j-nginx-performance/docker-compose
+    chdir: ~/f5j-nginx-performance-lab/docker-compose
