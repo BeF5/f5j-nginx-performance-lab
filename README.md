@@ -36,7 +36,7 @@
 作業ホストにて情報の取得
 
 ```
-git clone https://github.com/BeF5/f5j-nginx-performance.git
+git clone https://github.com/BeF5/f5j-nginx-performance-lab.git
 ```
 
 ## 1. NGINX Unit + Wordpress のインストール
