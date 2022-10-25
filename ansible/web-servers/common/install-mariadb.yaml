@@ -1,0 +1,46 @@
+---
+
+
+- name: Install php7.4
+  apt:
+    name: php7.4
+    force_apt_get: yes
+    update_cache: yes
+    state: present
+
+- name: Install php7.4-mysql
+  apt:
+    name: php7.4-mysql
+    force_apt_get: yes
+    update_cache: yes
+    state: present
+
+- name: Install mariadb-server
+  apt:
+    name: mariadb-server
+    force_apt_get: yes
+    update_cache: yes
+    state: present
+
+- name: Install mariadb-client
+  apt:
+    name: mariadb-client
+    force_apt_get: yes
+    update_cache: yes
+    state: present
+
+- name: Start service mariadb, if not started
+  service:
+    name: mariadb
+    state: started
+
+- name: Setup MariaDB for wordpress
+  shell: |
+    mariadb -e "CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8;"
+    sleep 1
+    mariadb -e "GRANT ALL ON wordpress.* TO wordpress@localhost IDENTIFIED BY 'password';"
+    sleep 1
+    mariadb -e "FLUSH PRIVILEGES;"
+  args:
+    chdir: ~/
+

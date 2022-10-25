@@ -1,0 +1,7 @@
+---
+- name: Start Locust
+  shell: |
+    mkdir -p locust/result
+    docker-compose -f ~/locust/docker-compose-locust.yaml up -d --scale worker=2
+  args:
+    chdir: ~/f5j-nginx-performance/docker-compose

@@ -1,0 +1,12 @@
+---
+- name: Setup Wordpress 
+  hosts: all
+  become: yes
+  tasks:
+  - import_tasks: common/update-ubuntu.yaml
+  - import_tasks: apache/install-apache2.yaml
+  - import_tasks: common/install-docker.yaml
+  - import_tasks: common/install-mariadb.yaml
+  - import_tasks: apache/install-wordpress.yaml
+  - import_tasks: apache/setup-apache2.yaml
+

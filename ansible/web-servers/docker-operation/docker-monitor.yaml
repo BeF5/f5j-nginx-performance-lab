@@ -1,0 +1,8 @@
+---
+- name: Start Grafana & Prometheus
+  shell: |
+    sudo docker volume create metrics_data
+    sudo docker volume create grafana_data
+    sudo docker-compose -f ~/grafana-prom/docker-compose.yaml up -d
+  args:
+    chdir: ~/

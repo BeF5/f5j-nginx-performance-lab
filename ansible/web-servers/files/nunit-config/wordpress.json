@@ -1,0 +1,67 @@
+
+{
+    "listeners": {
+        "*:80": {
+            "pass": "routes"
+        },
+        "*:443": {
+            "pass": "routes",
+            "tls": {
+                "certificate": "bundle"
+            }
+        }
+
+    },
+
+    "routes": [
+        {
+            "match": {
+                "uri": [
+                    "/html/*"
+                ]
+            },
+            "action": {
+                "share": "/var/www/$uri",
+                "index": "index.html"
+            }
+        },
+        {
+            "match": {
+                "uri": [
+                    "*.php",
+                    "*.php/*",
+                    "/wp-admin/"
+                ]
+            },
+
+            "action": {
+                "pass": "applications/wordpress/direct"
+            }
+        },
+        {
+            "action": {
+                "share": "/var/www/wordpress$uri",
+                "fallback": {
+                    "pass": "applications/wordpress/index"
+                }
+            }
+        }
+    ],
+
+    "applications": {
+        "wordpress": {
+            "type": "php",
+            "targets": {
+                "direct": {
+                    "root": "/var/www/wordpress/"
+                },
+
+                "index": {
+                    "root": "/var/www/wordpress/",
+                    "script": "index.php"
+                }
+            }
+        }
+    }
+}
+

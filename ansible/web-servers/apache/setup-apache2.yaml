@@ -1,0 +1,53 @@
+---
+#- name: Replace apache2.conf
+#  replace:
+#    path: /etc/apache2/apache2.conf
+#    regexp: 'Directory /var/www'
+#    replace: 'Directory /var/www/html/wordpress'
+
+#- name: Move wordpress file to html root
+#  shell: |
+#    sudo cp -r /var/www/html/wordpress/* /var/www/html/
+#  args:
+#    chdir: ~/
+
+- name: Create Directory 
+  file:
+    path: "/var/www/html/html"
+    state: directory
+    owner: "root"
+    group: "root"
+    mode: "775"
+
+- name: Copy index.html
+  copy:
+    src: ./index.html
+    dest: /var/www/html/html
+
+- name: Remove index.html
+  file:
+    path: /var/www/html/index.html
+    state: absent
+
+- name: Copy TLS Key
+  ansible.builtin.copy:
+    src: ./www.example.com.key
+    dest: /etc/ssl/private/ssl-cert-snakeoil.key
+
+- name: Copy TLS Cert
+  ansible.builtin.copy:
+    src: ./www.example.com.pem
+    dest: /etc/ssl/certs/ssl-cert-snakeoil.pem
+
+- name: Setup Apache SSL
+  shell: |
+    sudo a2enmod ssl
+    sudo a2ensite default-ssl
+  args:
+    chdir: ~/
+
+- name: Restart service apache2started
+  service:
+    name: apache2
+    state: restarted
+

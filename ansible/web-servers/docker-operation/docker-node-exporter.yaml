@@ -1,0 +1,9 @@
+---
+- name: Start Node Export
+  shell: |
+    sudo docker volume create metrics_data
+    sudo docker-compose -f ~/node-exporter/docker-compose.yaml  up -d
+  args:
+    chdir: ~/
+
+

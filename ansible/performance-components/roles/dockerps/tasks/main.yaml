@@ -1,0 +1,6 @@
+---
+- name: check docker ps
+  shell: |
+    sudo docker ps
+  args:
+    chdir: ~/

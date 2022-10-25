@@ -1,0 +1,67 @@
+---
+
+- name: Get wp-cli
+  get_url:
+    url: https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+    dest: /home/ubuntu/wp-cli.phar
+    mode: 0755
+
+- name: Move wp-cli
+  shell: |
+    chmod +x /home/ubuntu/wp-cli.phar
+    mv  /home/ubuntu/wp-cli.phar /usr/local/bin/wp
+
+- name: Chown /var/ww/html
+  shell: |
+    chown -R www-data. /var/www/html
+
+- name: WordPress Core Download & Install1
+  shell: |
+    sudo -u www-data wp core download --locale=ja
+  args:
+    chdir: /var/www/html
+
+- name: WordPress Core Download & Install2
+  shell: |
+    sudo -u www-data wp core config --dbname=wordpress --dbuser=wordpress --dbpass=password --dbhost=localhost --dbprefix=wp_ 
+    #wp db create
+  args:
+    chdir: /var/www/html
+
+- name: WordPress Core Download & Install3
+  shell: |
+    #wp db create
+    sudo -u www-data wp core install --url=http://{{ ansible_host }} --title=WP-Example --admin_user=admin --admin_password=adminpassword --admin_email=admin@example.com
+  args:
+    chdir: /var/www/html
+
+ 
+# - name: Download wordpress
+#   get_url:
+#     url: https://ja.wordpress.org/latest-ja.tar.gz
+#     dest: /home/ubuntu
+# 
+# - name: Find Service package
+#   find:
+#     paths: /home/ubuntu
+#     patterns: "wordpress*.tar.gz"
+#   register: find_result
+# 
+# - name: debug
+#   debug:
+#     msg: "{{ find_result }}"
+# 
+# - name: Unpack service on remote host
+#   unarchive: 
+#     src: "{{ item.path }}"
+#     dest: /var/www/html
+#     remote_src: yes
+#   with_items: "{{ find_result.files }}"
+#   
+# 
+#     #- name: Unarchive a file that is already on the remote machine
+#     #  unarchive:
+#     #    src: /home/ubuntu/latest-ja.tar.gz
+#     #    dest: /var/www/html
+#     #    remote_src: yes
+

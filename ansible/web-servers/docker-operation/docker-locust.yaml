@@ -1,0 +1,6 @@
+---
+- name: Start Locust
+  shell: |
+    sudo docker-compose -f ~/locust/docker-compose-locust.yaml up -d --scale worker=2
+  args:
+    chdir: ~/

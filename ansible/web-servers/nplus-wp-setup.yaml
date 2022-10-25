@@ -1,0 +1,14 @@
+---
+- name: Setup Wordpress 
+  hosts: all
+  collections:
+  - nginxinc.nginx_core
+  become: yes
+  tasks:
+  - import_tasks: common/update-ubuntu.yaml
+  - import_tasks: nplus/install-nplus.yaml
+  - import_tasks: common/install-docker.yaml
+  - import_tasks: common/install-mariadb.yaml
+  - import_tasks: nplus/install-wordpress.yaml
+  - import_tasks: nplus/setup-nplus.yaml
+

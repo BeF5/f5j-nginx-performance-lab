@@ -1,0 +1,4 @@
+---
+
+- name: Git clone for NGINX performance 
+  shell: "git clone https://github.com/BeF5/f5j-nginx-performance.git"

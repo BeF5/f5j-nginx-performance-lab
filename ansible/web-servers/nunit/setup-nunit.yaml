@@ -1,0 +1,35 @@
+---
+
+- name: Create Directory
+  file:
+    path: "/var/www/ssl"
+    state: directory
+    owner: "root"
+    group: "root"
+    mode: "775"
+
+- name: Copy TLS Cert and Key Bundle
+  ansible.builtin.copy:
+    src: ./www.example.com.rsa2k.pem
+    dest: /home/ubuntu/
+
+- name: Apply TLS Cert and Key
+  ansible.builtin.uri:
+    unix_socket: /var/run/control.unit.sock
+    url: http://localhost/certificates/bundle
+    method: PUT
+    body: "{{ lookup('ansible.builtin.file','/home/ubuntu/www.example.com.rsa2k.pem') }}"
+    body_format: json
+
+- name: Copy Unit Config 
+  ansible.builtin.copy:
+    src: ./nunit-config/wordpress.json
+    dest: /home/ubuntu/
+
+- name: Apply Unit Config
+  ansible.builtin.uri:
+    unix_socket: /var/run/control.unit.sock
+    url: http://localhost/config/
+    method: PUT
+    body: "{{ lookup('ansible.builtin.file','/home/ubuntu/wordpress.json') }}"
+    body_format: json

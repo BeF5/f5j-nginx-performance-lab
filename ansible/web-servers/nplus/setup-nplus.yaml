@@ -1,0 +1,36 @@
+---
+
+
+- name: Create Directory
+  file:
+    path: "/var/www/ssl"
+    state: directory
+    owner: "root"
+    group: "root"
+    mode: "775"
+
+- name: Copy TLS Key
+  ansible.builtin.copy:
+    src: ./www.example.com.key
+    dest: /var/www/ssl
+
+- name: Copy TLS Cert
+  ansible.builtin.copy:
+    src: ./www.example.com.pem
+    dest: /var/www/ssl
+
+- name: Copy nginx.conf
+  ansible.builtin.copy:
+    src: ./nginx-config/nginx.conf
+    dest: /etc/nginx/nginx.conf
+
+- name: Copy default.conf
+  ansible.builtin.copy:
+    src: ./nginx-config/default.conf
+    dest: /etc/nginx/conf.d/default.conf
+ 
+- name: Reload NGINX Process
+  shell: |
+    nginx -s reload
+
+

@@ -1,0 +1,23 @@
+all:
+  children:
+    locust:
+      hosts:
+        10.1.1.7:
+    monitor:
+      hosts:
+        10.1.1.8:
+    host1:
+      hosts:
+        10.1.1.4:
+    host2:
+      hosts:
+        10.1.1.5:
+    host3:
+      hosts:
+        10.1.1.6:
+    host4:
+      hosts:
+        10.1.1.9:
+    host5:
+      hosts:
+        10.1.1.10:

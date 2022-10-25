@@ -1,0 +1,10 @@
+---
+- name: Start Monitor
+  hosts: all
+  gather_facts: no
+  become: yes
+    tasks:
+    - import_tasks: common/update-ubuntu.yaml
+    - import_tasks: common/install-docker.yaml
+    - import_tasks: common/git-clone.yaml
+    - import_tasks: monitor/start-grafana-prom.yaml

@@ -1,0 +1,29 @@
+---
+- name: Install php-fpm
+  apt:
+    name: php-fpm
+    force_apt_get: yes
+    update_cache: yes
+    state: present
+
+- name: Install php-json
+  apt:
+    name: php-json
+    force_apt_get: yes
+    update_cache: yes
+    state: present
+
+- name: Start service php-fpm, if not started
+  service:
+    name: php7.4-fpm
+    state: started
+
+- name: Install NGINX Plus
+  ansible.builtin.include_role:
+    name: nginx
+  vars:
+    nginx_type: plus
+    nginx_license:
+      certificate: ~/nginx-repo.crt
+      key: ~/nginx-repo.key
+    nginx_remove_license: false

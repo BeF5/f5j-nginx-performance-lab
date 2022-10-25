@@ -1,0 +1,19 @@
+global:
+  # メトリクスを収集する感覚
+  scrape_interval:     15s
+  # 監視ルールを評価する感覚
+  evaluation_interval: 15s
+  # メトリクス収集のタイムアウト値
+  scrape_timeout: 10s
+
+  external_labels:
+      # アラート通知に使われるAlertManagerの名前
+      monitor: 'sample-monitor'
+
+# メトリクス収集の設定
+scrape_configs:
+  # メトリクス収集する対象の定義を別ファイルに切り出すこともできる
+  - file_sd_configs:
+    - files:
+      - /etc/prometheus/node.yaml
+    job_name: node
