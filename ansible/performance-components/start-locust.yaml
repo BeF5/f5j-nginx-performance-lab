@@ -8,3 +8,5 @@
   - import_tasks: common/install-docker.yaml
   - import_tasks: common/git-clone.yaml
   - import_tasks: locust/start-locust.yaml
+  - import_tasks: locust/install-nunit.yaml
+  - import_tasks: locust/setup-nunit.yaml

@@ -1,0 +1,29 @@
+
+{
+    "listeners": {
+        "*:80": {
+            "pass": "routes"
+        },
+        "*:443": {
+            "pass": "routes",
+            "tls": {
+                "certificate": "bundle"
+            }
+        }
+
+    },
+    "routes": [
+        {
+            "match": {
+                "uri": [
+                    "/*"
+                ]
+            },
+            "action": {
+                "share": "/root/f5j-nginx-performance-lab/docker-compose/locust/result/",
+                "index": "index.html"
+            }
+        }
+    ]
+}
+
