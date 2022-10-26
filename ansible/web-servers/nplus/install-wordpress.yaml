@@ -56,33 +56,3 @@
   args:
     chdir: /var/www/wordpress
 
- 
-# - name: Download wordpress
-#   get_url:
-#     url: https://ja.wordpress.org/latest-ja.tar.gz
-#     dest: /home/ubuntu
-# 
-# - name: Find Service package
-#   find:
-#     paths: /home/ubuntu
-#     patterns: "wordpress*.tar.gz"
-#   register: find_result
-# 
-# - name: debug
-#   debug:
-#     msg: "{{ find_result }}"
-# 
-# - name: Unpack service on remote host
-#   unarchive: 
-#     src: "{{ item.path }}"
-#     dest: /var/www/html
-#     remote_src: yes
-#   with_items: "{{ find_result.files }}"
-#   
-# 
-#     #- name: Unarchive a file that is already on the remote machine
-#     #  unarchive:
-#     #    src: /home/ubuntu/latest-ja.tar.gz
-#     #    dest: /var/www/html
-#     #    remote_src: yes
-

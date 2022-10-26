@@ -5,6 +5,6 @@
   tasks:
     - name: Locust http to wordpress
       shell: |
-        docker run -d -v "/root/f5j-nginx-performance-lab/docker-compose/locust:/mnt/locust" locustio/locust --config /mnt/locust/config/http_10-1-1-4.conf -f /mnt/locust/senario/wp_top.py --html /mnt/locust/result/`date "+%Y-%m-%d-%H%M%S"`_http_10-1-1-4_wp_result.html 
-        docker run -d -v "/root/f5j-nginx-performance-lab/docker-compose/locust:/mnt/locust" locustio/locust --config /mnt/locust/config/http_10-1-1-5.conf -f /mnt/locust/senario/wp_top.py --html /mnt/locust/result/`date "+%Y-%m-%d-%H%M%S"`_http_10-1-1-5_wp_result.html 
-        docker run -d -v "/root/f5j-nginx-performance-lab/docker-compose/locust:/mnt/locust" locustio/locust --config /mnt/locust/config/http_10-1-1-6.conf -f /mnt/locust/senario/wp_top.py --html /mnt/locust/result/`date "+%Y-%m-%d-%H%M%S"`_http_10-1-1-6_wp_result.html 
+        docker run -d -v "/root/f5j-nginx-performance-lab/docker-compose/locust:/mnt/locust" locustio/locust --config /mnt/locust/config/http_10-1-1-4_wp.conf -f /mnt/locust/senario/wp_top.py --html /mnt/locust/result/`date "+%Y-%m-%d-%H%M%S"`_http_10-1-1-4_wp_result.html 
+        docker run -d -v "/root/f5j-nginx-performance-lab/docker-compose/locust:/mnt/locust" locustio/locust --config /mnt/locust/config/http_10-1-1-5_wp.conf -f /mnt/locust/senario/wp_top.py --html /mnt/locust/result/`date "+%Y-%m-%d-%H%M%S"`_http_10-1-1-5_wp_result.html 
+        docker run -d -v "/root/f5j-nginx-performance-lab/docker-compose/locust:/mnt/locust" locustio/locust --config /mnt/locust/config/http_10-1-1-6_wp.conf -f /mnt/locust/senario/wp_top.py --html /mnt/locust/result/`date "+%Y-%m-%d-%H%M%S"`_http_10-1-1-6_wp_result.html 

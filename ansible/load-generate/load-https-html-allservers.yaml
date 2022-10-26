@@ -5,7 +5,7 @@
   tasks:
     - name: Locust http to html
       shell: | 
-        docker run -d -v "/root/f5j-nginx-performance-lab/docker-compose/locust:/mnt/locust" locustio/locust --config /mnt/locust/config/https_10-1-1-4.conf -f /mnt/locust/senario/html.py --html /mnt/locust/result/`date "+%Y-%m-%d-%H%M%S"`_https_10-1-1-4_html_result.html
-        docker run -d -v "/root/f5j-nginx-performance-lab/docker-compose/locust:/mnt/locust" locustio/locust --config /mnt/locust/config/https_10-1-1-5.conf -f /mnt/locust/senario/html.py --html /mnt/locust/result/`date "+%Y-%m-%d-%H%M%S"`_https_10-1-1-5_html_result.html 
-        docker run -d -v "/root/f5j-nginx-performance-lab/docker-compose/locust:/mnt/locust" locustio/locust --config /mnt/locust/config/https_10-1-1-6.conf -f /mnt/locust/senario/html.py --html /mnt/locust/result/`date "+%Y-%m-%d-%H%M%S"`_https_10-1-1-6_html_result.html 
+        docker run -d -v "/root/f5j-nginx-performance-lab/docker-compose/locust:/mnt/locust" locustio/locust --config /mnt/locust/config/https_10-1-1-4_html.conf -f /mnt/locust/senario/html.py --html /mnt/locust/result/`date "+%Y-%m-%d-%H%M%S"`_https_10-1-1-4_html_result.html
+        docker run -d -v "/root/f5j-nginx-performance-lab/docker-compose/locust:/mnt/locust" locustio/locust --config /mnt/locust/config/https_10-1-1-5_html.conf -f /mnt/locust/senario/html.py --html /mnt/locust/result/`date "+%Y-%m-%d-%H%M%S"`_https_10-1-1-5_html_result.html 
+        docker run -d -v "/root/f5j-nginx-performance-lab/docker-compose/locust:/mnt/locust" locustio/locust --config /mnt/locust/config/https_10-1-1-6_html.conf -f /mnt/locust/senario/html.py --html /mnt/locust/result/`date "+%Y-%m-%d-%H%M%S"`_https_10-1-1-6_html_result.html 
 
