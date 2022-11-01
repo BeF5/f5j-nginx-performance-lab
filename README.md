@@ -133,7 +133,7 @@ ansible-playbook -i inventory/hosts performance-components/start-node-exporter.y
   - Locust のホストで以下のようなコマンドを実行する
 
     ```
-    docker run -d -v "/home/ubuntu/locust:/mnt/locust"  locustio/locust --config /mnt/locust/conf/   http_10-1-1-4.conf -f /mnt/locust/senario/wp_top.py    --html /mnt/locust/result/`date "  +%Y%m%d-%H%M%S"`_http_10-1-1-4_wp_result.html 
+    docker run -d -v "/root/f5j-nginx-performance-lab/docker-compose/locust:/mnt/locust" locustio/locust --config /mnt/locust/config/http_10-1-1-4_html.conf -f /mnt/locust/senario/html.py --html /mnt/locust/result/`date "+%Y-%m-%d-%H%M%S"`_http_10-1-1-4_html_result.html
     ```
 
 ### Grafana / Prometheus への接続

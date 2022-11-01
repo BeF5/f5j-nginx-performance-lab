@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Locust Dashboard</title>
+  <link rel="stylesheet" href="./docs/bootstrap.min.css">
+  <link href="./docs/dashboard.css" rel="stylesheet">
+  <style type="text/css">
+    /* Chart.js */
+    @-webkit-keyframes chartjs-render-animation {
+      from {
+        opacity: 0.99
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    @keyframes chartjs-render-animation {
+      from {
+        opacity: 0.99
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .chartjs-render-monitor {
+      -webkit-animation: chartjs-render-animation 0.001s;
+      animation: chartjs-render-animation 0.001s;
+    }
+  </style>
+
+  <!-- Vue Header-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+  <!-- Vue Good Table Header-->
+  <link href="https://cdn.jsdelivr.net/npm/vue-good-table@2.16.3/dist/vue-good-table.css" rel='stylesheet'>
+  <script src="https://cdn.jsdelivr.net/npm/vue-good-table@2.16.3/dist/vue-good-table.js"></script>
+
+  <!-- axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+  <a id="skippy" class="sr-only sr-only-focusable" href="https://getbootstrap.jp/docs/4.3/examples/dashboard/#content">
+    <div class="container">
+      <span class="skiplink-text">Skip to main content</span>
+    </div>
+  </a>
+
+  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="https://getbootstrap.jp/docs/4.3/examples/dashboard/#">Locust
+      Test</a>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+
+          <ul class="nav flex-column mb-2">
+            <li class="nav-item invisible">
+              <a class="nav-link" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-file-text">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Run
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-file-text">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Result
+              </a>
+            </li>
+            <li class="nav-item  invisible">
+              <a class="nav-link" href="https://getbootstrap.jp/docs/4.3/examples/dashboard/#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-file-text">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                State
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+
+      <!-- Main Contents -->
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="chartjs-size-monitor"
+          style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+          <div class="chartjs-size-monitor-expand"
+            style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+            <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+          </div>
+          <div class="chartjs-size-monitor-shrink"
+            style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+            <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+          </div>
+        </div>
+
+
+        <div id="app">
+          <div>
+            <h1> {{ errortext }} </h1>
+            <h3> {{ errordetail }} </h3>
+
+            <h4> {{ message }} </h4>
+          </div>
+
+          <vue-good-table :columns="columns" :rows="rows" :sort-options="{
+              enabled: true,
+              initialSortBy: {field: 'id', type: 'asc'}
+            }" :search-options="{
+              enabled: true,
+              trigger: 'enter',
+              skipDiacritics: true,
+              searchFn: mySearchFn,
+              placeholder: 'Search this table',
+              externalQuery: searchQuery
+            }" :pagination-options="{
+              enabled: true,
+              mode: 'records',
+              perPage: 30,
+              position: '',
+              perPageDropdown: [10, 30, 50, 100],
+              dropdownAllowAll: false,
+              setCurrentPage: 1,
+              nextLabel: 'next',
+              prevLabel: 'prev',
+              rowsPerPageLabel: 'Rows per page',
+              ofLabel: 'of',
+              pageLabel: 'page', // for 'pages' mode
+              allLabel: 'All',
+            }" @on-row-click="onRowClick" />
+        </div>
+        <!-- Vue -->
+
+        <script>
+          var app = new Vue({
+            el: '#app',
+            data: {
+              columns: [
+                {
+                  label: 'id',
+                  field: 'id',
+                  type: 'number',
+                },
+                {
+                  label: 'Created On',
+                  field: 'createdAt',
+                },
+                {
+                  label: 'targetHost',
+                  field: 'targetHost',
+                },
+                {
+                  label: 'protocol',
+                  field: 'protocol',
+                },
+                {
+                  label: 'senario',
+                  field: 'senario',
+                },
+              ],
+              rows: [
+              ],
+              errortext: '',
+              errordetail: '',
+              message: 'Please click each row to see the traffic report.',
+            },
+            methods: {
+              onRowClick: function (params) {
+                alert(JSON.stringify(params));
+                console.log(params.row.file);
+                console.log(params);
+                window.open('/' + params.row.file, '_blank');
+
+              },
+            },
+            mounted: function () {
+              axios.get('/api/locust-result/')
+                .then(function (response) {
+                  if (0 == response.data.length) {
+                    this.errordetail = '';
+                    this.errortext = 'NO RESULT'
+                  } else {
+                    this.rows = response.data;
+                  }
+                }.bind(this))
+                .catch(function (error) {
+                  this.errordetail = error.message;
+                  this.errortext = 'ERROR'
+                }.bind(this))
+            }
+          })
+        </script>
+
+
+        <!-- Main Contents -->
+      </main>
+    </div>
+  </div>
+
+
+  <!-- Main Contents -->
+
+
+  <!-- Icons -->
+  <script src="./docs/feather.min.js"></script>
+  <script>
+    feather.replace()
+  </script>
+
+  <!-- BootStrap -->
+  <script src="./docs/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script>
+    window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
+  </script>
+  <script src="./docs/bootstrap.bundle.min.js"></script>
+  <script src="./docs/anchor.min.js"></script>
+  <script src="./docs/clipboard.min.js"></script>
+  <script src="./docs/bs-custom-file-input.min.js"></script>
+  <script src="./docs/application.js"></script>
+  <script src="./docs/search.js"></script>
+  <script src="./docs/ie-emulation-modes-warning.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+---
+
+- name: Copy nginx.conf
+  ansible.builtin.copy:
+    src: ./nginx.conf
+    dest: /etc/nginx/nginx.conf
+
+- name: Copy default.conf
+  ansible.builtin.copy:
+    src: ./locust-ui
+    dest: /etc/nginx/conf.d
+ 
+- name: Reload NGINX Process
+  shell: |
+    nginx -s reload
+
+
