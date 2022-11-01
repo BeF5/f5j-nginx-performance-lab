@@ -1,6 +1,8 @@
 ---
 - name: Start Locust
   hosts: all
+  collections:
+  - nginxinc.nginx_core
   gather_facts: yes
   become: yes
   tasks:

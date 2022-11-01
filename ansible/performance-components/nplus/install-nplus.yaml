@@ -9,3 +9,5 @@
       certificate: ~/nginx-repo.crt
       key: ~/nginx-repo.key
     nginx_remove_license: false
+    nginx_modules: 
+      - name: njs
