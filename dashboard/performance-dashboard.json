@@ -47,7 +47,7 @@
   "gnetId": 1860,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1666773174403,
+  "iteration": 1667382250618,
   "links": [
     {
       "icon": "external link",
@@ -150,14 +150,6 @@
         },
         {
           "exemplar": true,
-          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node1\",mode=\"idle\"}[$interval])) *100\r",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Idle",
-          "refId": "D"
-        },
-        {
-          "exemplar": true,
           "expr": "(1 - avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node1\",mode=\"idle\"}[$interval])))*100\r",
           "hide": false,
           "interval": "",
@@ -185,7 +177,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:515",
           "format": "percent",
           "label": null,
           "logBase": 1,
@@ -194,7 +185,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:516",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -279,24 +269,20 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:223",
           "alias": "RAM Total",
           "color": "#E0F9D7",
           "fill": 0,
           "stack": false
         },
         {
-          "$$hashKey": "object:224",
           "alias": "RAM Cache + Buffer",
           "color": "#052B51"
         },
         {
-          "$$hashKey": "object:225",
           "alias": "RAM Free",
           "color": "#7EB26D"
         },
         {
-          "$$hashKey": "object:226",
           "alias": "Avaliable",
           "color": "#DEDAF7",
           "fill": 0,
@@ -370,7 +356,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:259",
           "format": "bytes",
           "label": "",
           "logBase": 1,
@@ -379,7 +364,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:260",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -469,7 +453,6 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:685",
           "alias": "/.*trans.*/",
           "transform": "negative-Y"
         }
@@ -515,7 +498,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:692",
           "format": "bps",
           "label": null,
           "logBase": 1,
@@ -524,7 +506,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:693",
           "format": "pps",
           "label": "",
           "logBase": 1,
@@ -599,14 +580,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node1\",mode=\"system\"}[$interval])) *100\r\n",
+          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node2\",mode=\"system\"}[$interval])) *100\r\n",
           "interval": "",
           "legendFormat": "System",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node1\",mode=\"user\"}[$interval])) *100\r",
+          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node2\",mode=\"user\"}[$interval])) *100\r",
           "hide": false,
           "interval": "",
           "legendFormat": "User",
@@ -614,7 +595,7 @@
         },
         {
           "exemplar": true,
-          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node1\",mode=\"iowait\"}[$interval])) *100\r",
+          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node2\",mode=\"iowait\"}[$interval])) *100\r",
           "hide": false,
           "interval": "",
           "legendFormat": "iowait",
@@ -622,15 +603,7 @@
         },
         {
           "exemplar": true,
-          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node1\",mode=\"idle\"}[$interval])) *100\r",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Idle",
-          "refId": "D"
-        },
-        {
-          "exemplar": true,
-          "expr": "(1 - avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node1\",mode=\"idle\"}[$interval])))*100\r",
+          "expr": "(1 - avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node2\",mode=\"idle\"}[$interval])))*100\r",
           "hide": false,
           "interval": "",
           "legendFormat": "Total",
@@ -657,7 +630,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:515",
           "format": "percent",
           "label": null,
           "logBase": 1,
@@ -666,7 +638,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:516",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -751,24 +722,20 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:223",
           "alias": "RAM Total",
           "color": "#E0F9D7",
           "fill": 0,
           "stack": false
         },
         {
-          "$$hashKey": "object:224",
           "alias": "RAM Cache + Buffer",
           "color": "#052B51"
         },
         {
-          "$$hashKey": "object:225",
           "alias": "RAM Free",
           "color": "#7EB26D"
         },
         {
-          "$$hashKey": "object:226",
           "alias": "Avaliable",
           "color": "#DEDAF7",
           "fill": 0,
@@ -780,7 +747,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "node_memory_MemTotal_bytes{instance=\"$node1\",job=\"$job\"}",
+          "expr": "node_memory_MemTotal_bytes{instance=\"$node2\",job=\"$job\"}",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -789,7 +756,7 @@
           "step": 240
         },
         {
-          "expr": "node_memory_MemTotal_bytes{instance=\"$node1\",job=\"$job\"} - node_memory_MemFree_bytes{instance=\"$node1\",job=\"$job\"} - (node_memory_Cached_bytes{instance=\"$node1\",job=\"$job\"} + node_memory_Buffers_bytes{instance=\"$node1\",job=\"$job\"} + node_memory_SReclaimable_bytes{instance=\"$node1\",job=\"$job\"})",
+          "expr": "node_memory_MemTotal_bytes{instance=\"$node2\",job=\"$job\"} - node_memory_MemFree_bytes{instance=\"$node2\",job=\"$job\"} - (node_memory_Cached_bytes{instance=\"$node2\",job=\"$job\"} + node_memory_Buffers_bytes{instance=\"$node2\",job=\"$job\"} + node_memory_SReclaimable_bytes{instance=\"$node2\",job=\"$job\"})",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -798,7 +765,7 @@
           "step": 240
         },
         {
-          "expr": "node_memory_Cached_bytes{instance=\"$node1\",job=\"$job\"} + node_memory_Buffers_bytes{instance=\"$node1\",job=\"$job\"} + node_memory_SReclaimable_bytes{instance=\"$node1\",job=\"$job\"}",
+          "expr": "node_memory_Cached_bytes{instance=\"$node2\",job=\"$job\"} + node_memory_Buffers_bytes{instance=\"$node2\",job=\"$job\"} + node_memory_SReclaimable_bytes{instance=\"$node2\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "RAM Cache + Buffer",
@@ -806,7 +773,7 @@
           "step": 240
         },
         {
-          "expr": "node_memory_MemFree_bytes{instance=\"$node1\",job=\"$job\"}",
+          "expr": "node_memory_MemFree_bytes{instance=\"$node2\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "RAM Free",
@@ -814,7 +781,7 @@
           "step": 240
         },
         {
-          "expr": "(node_memory_SwapTotal_bytes{instance=\"$node1\",job=\"$job\"} - node_memory_SwapFree_bytes{instance=\"$node1\",job=\"$job\"})",
+          "expr": "(node_memory_SwapTotal_bytes{instance=\"$node2\",job=\"$job\"} - node_memory_SwapFree_bytes{instance=\"$node2\",job=\"$job\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "SWAP Used",
@@ -842,7 +809,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:259",
           "format": "bytes",
           "label": "",
           "logBase": 1,
@@ -851,7 +817,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:260",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -941,7 +906,6 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:685",
           "alias": "/.*trans.*/",
           "transform": "negative-Y"
         }
@@ -951,7 +915,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(node_network_receive_bytes_total{instance=\"$node1\",job=\"$job\"}[$__rate_interval])*8",
+          "expr": "rate(node_network_receive_bytes_total{instance=\"$node2\",job=\"$job\"}[$__rate_interval])*8",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "recv {{device}}",
@@ -959,7 +923,7 @@
           "step": 240
         },
         {
-          "expr": "rate(node_network_transmit_bytes_total{instance=\"$node1\",job=\"$job\"}[$__rate_interval])*8",
+          "expr": "rate(node_network_transmit_bytes_total{instance=\"$node2\",job=\"$job\"}[$__rate_interval])*8",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "trans {{device}} ",
@@ -987,7 +951,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:692",
           "format": "bps",
           "label": null,
           "logBase": 1,
@@ -996,7 +959,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:693",
           "format": "pps",
           "label": "",
           "logBase": 1,
@@ -1071,14 +1033,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node1\",mode=\"system\"}[$interval])) *100\r\n",
+          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node3\",mode=\"system\"}[$interval])) *100\r\n",
           "interval": "",
           "legendFormat": "System",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node1\",mode=\"user\"}[$interval])) *100\r",
+          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node3\",mode=\"user\"}[$interval])) *100\r",
           "hide": false,
           "interval": "",
           "legendFormat": "User",
@@ -1086,7 +1048,7 @@
         },
         {
           "exemplar": true,
-          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node1\",mode=\"iowait\"}[$interval])) *100\r",
+          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node3\",mode=\"iowait\"}[$interval])) *100\r",
           "hide": false,
           "interval": "",
           "legendFormat": "iowait",
@@ -1094,15 +1056,7 @@
         },
         {
           "exemplar": true,
-          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node1\",mode=\"idle\"}[$interval])) *100\r",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Idle",
-          "refId": "D"
-        },
-        {
-          "exemplar": true,
-          "expr": "(1 - avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node1\",mode=\"idle\"}[$interval])))*100\r",
+          "expr": "(1 - avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node3\",mode=\"idle\"}[$interval])))*100\r",
           "hide": false,
           "interval": "",
           "legendFormat": "Total",
@@ -1129,7 +1083,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:515",
           "format": "percent",
           "label": null,
           "logBase": 1,
@@ -1138,7 +1091,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:516",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1223,24 +1175,20 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:223",
           "alias": "RAM Total",
           "color": "#E0F9D7",
           "fill": 0,
           "stack": false
         },
         {
-          "$$hashKey": "object:224",
           "alias": "RAM Cache + Buffer",
           "color": "#052B51"
         },
         {
-          "$$hashKey": "object:225",
           "alias": "RAM Free",
           "color": "#7EB26D"
         },
         {
-          "$$hashKey": "object:226",
           "alias": "Avaliable",
           "color": "#DEDAF7",
           "fill": 0,
@@ -1252,7 +1200,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "node_memory_MemTotal_bytes{instance=\"$node1\",job=\"$job\"}",
+          "expr": "node_memory_MemTotal_bytes{instance=\"$node3\",job=\"$job\"}",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1261,7 +1209,7 @@
           "step": 240
         },
         {
-          "expr": "node_memory_MemTotal_bytes{instance=\"$node1\",job=\"$job\"} - node_memory_MemFree_bytes{instance=\"$node1\",job=\"$job\"} - (node_memory_Cached_bytes{instance=\"$node1\",job=\"$job\"} + node_memory_Buffers_bytes{instance=\"$node1\",job=\"$job\"} + node_memory_SReclaimable_bytes{instance=\"$node1\",job=\"$job\"})",
+          "expr": "node_memory_MemTotal_bytes{instance=\"$node3\",job=\"$job\"} - node_memory_MemFree_bytes{instance=\"$node3\",job=\"$job\"} - (node_memory_Cached_bytes{instance=\"$node3\",job=\"$job\"} + node_memory_Buffers_bytes{instance=\"$node3\",job=\"$job\"} + node_memory_SReclaimable_bytes{instance=\"$node3\",job=\"$job\"})",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1270,7 +1218,7 @@
           "step": 240
         },
         {
-          "expr": "node_memory_Cached_bytes{instance=\"$node1\",job=\"$job\"} + node_memory_Buffers_bytes{instance=\"$node1\",job=\"$job\"} + node_memory_SReclaimable_bytes{instance=\"$node1\",job=\"$job\"}",
+          "expr": "node_memory_Cached_bytes{instance=\"$node3\",job=\"$job\"} + node_memory_Buffers_bytes{instance=\"$node3\",job=\"$job\"} + node_memory_SReclaimable_bytes{instance=\"$node3\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "RAM Cache + Buffer",
@@ -1278,7 +1226,7 @@
           "step": 240
         },
         {
-          "expr": "node_memory_MemFree_bytes{instance=\"$node1\",job=\"$job\"}",
+          "expr": "node_memory_MemFree_bytes{instance=\"$node3\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "RAM Free",
@@ -1286,7 +1234,7 @@
           "step": 240
         },
         {
-          "expr": "(node_memory_SwapTotal_bytes{instance=\"$node1\",job=\"$job\"} - node_memory_SwapFree_bytes{instance=\"$node1\",job=\"$job\"})",
+          "expr": "(node_memory_SwapTotal_bytes{instance=\"$node3\",job=\"$job\"} - node_memory_SwapFree_bytes{instance=\"$node3\",job=\"$job\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "SWAP Used",
@@ -1314,7 +1262,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:259",
           "format": "bytes",
           "label": "",
           "logBase": 1,
@@ -1323,7 +1270,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:260",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1413,7 +1359,6 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:685",
           "alias": "/.*trans.*/",
           "transform": "negative-Y"
         }
@@ -1423,7 +1368,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(node_network_receive_bytes_total{instance=\"$node1\",job=\"$job\"}[$__rate_interval])*8",
+          "expr": "rate(node_network_receive_bytes_total{instance=\"$node3\",job=\"$job\"}[$__rate_interval])*8",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "recv {{device}}",
@@ -1431,7 +1376,7 @@
           "step": 240
         },
         {
-          "expr": "rate(node_network_transmit_bytes_total{instance=\"$node1\",job=\"$job\"}[$__rate_interval])*8",
+          "expr": "rate(node_network_transmit_bytes_total{instance=\"$node3\",job=\"$job\"}[$__rate_interval])*8",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "trans {{device}} ",
@@ -1459,7 +1404,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:692",
           "format": "bps",
           "label": null,
           "logBase": 1,
@@ -1468,7 +1412,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:693",
           "format": "pps",
           "label": "",
           "logBase": 1,
@@ -1543,14 +1486,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node1\",mode=\"system\"}[$interval])) *100\r\n",
+          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node4\",mode=\"system\"}[$interval])) *100\r\n",
           "interval": "",
           "legendFormat": "System",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node1\",mode=\"user\"}[$interval])) *100\r",
+          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node4\",mode=\"user\"}[$interval])) *100\r",
           "hide": false,
           "interval": "",
           "legendFormat": "User",
@@ -1558,7 +1501,7 @@
         },
         {
           "exemplar": true,
-          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node1\",mode=\"iowait\"}[$interval])) *100\r",
+          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node4\",mode=\"iowait\"}[$interval])) *100\r",
           "hide": false,
           "interval": "",
           "legendFormat": "iowait",
@@ -1566,15 +1509,7 @@
         },
         {
           "exemplar": true,
-          "expr": "avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node1\",mode=\"idle\"}[$interval])) *100\r",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Idle",
-          "refId": "D"
-        },
-        {
-          "exemplar": true,
-          "expr": "(1 - avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node1\",mode=\"idle\"}[$interval])))*100\r",
+          "expr": "(1 - avg by (instance)(rate(node_cpu_seconds_total{instance=\"$node4\",mode=\"idle\"}[$interval])))*100\r",
           "hide": false,
           "interval": "",
           "legendFormat": "Total",
@@ -1601,7 +1536,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:515",
           "format": "percent",
           "label": null,
           "logBase": 1,
@@ -1610,7 +1544,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:516",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1695,24 +1628,20 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:223",
           "alias": "RAM Total",
           "color": "#E0F9D7",
           "fill": 0,
           "stack": false
         },
         {
-          "$$hashKey": "object:224",
           "alias": "RAM Cache + Buffer",
           "color": "#052B51"
         },
         {
-          "$$hashKey": "object:225",
           "alias": "RAM Free",
           "color": "#7EB26D"
         },
         {
-          "$$hashKey": "object:226",
           "alias": "Avaliable",
           "color": "#DEDAF7",
           "fill": 0,
@@ -1724,7 +1653,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "node_memory_MemTotal_bytes{instance=\"$node1\",job=\"$job\"}",
+          "expr": "node_memory_MemTotal_bytes{instance=\"$node4\",job=\"$job\"}",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1733,7 +1662,7 @@
           "step": 240
         },
         {
-          "expr": "node_memory_MemTotal_bytes{instance=\"$node1\",job=\"$job\"} - node_memory_MemFree_bytes{instance=\"$node1\",job=\"$job\"} - (node_memory_Cached_bytes{instance=\"$node1\",job=\"$job\"} + node_memory_Buffers_bytes{instance=\"$node1\",job=\"$job\"} + node_memory_SReclaimable_bytes{instance=\"$node1\",job=\"$job\"})",
+          "expr": "node_memory_MemTotal_bytes{instance=\"$node4\",job=\"$job\"} - node_memory_MemFree_bytes{instance=\"$node4\",job=\"$job\"} - (node_memory_Cached_bytes{instance=\"$node4\",job=\"$job\"} + node_memory_Buffers_bytes{instance=\"$node4\",job=\"$job\"} + node_memory_SReclaimable_bytes{instance=\"$node4\",job=\"$job\"})",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1742,7 +1671,7 @@
           "step": 240
         },
         {
-          "expr": "node_memory_Cached_bytes{instance=\"$node1\",job=\"$job\"} + node_memory_Buffers_bytes{instance=\"$node1\",job=\"$job\"} + node_memory_SReclaimable_bytes{instance=\"$node1\",job=\"$job\"}",
+          "expr": "node_memory_Cached_bytes{instance=\"$node4\",job=\"$job\"} + node_memory_Buffers_bytes{instance=\"$node4\",job=\"$job\"} + node_memory_SReclaimable_bytes{instance=\"$node4\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "RAM Cache + Buffer",
@@ -1750,7 +1679,7 @@
           "step": 240
         },
         {
-          "expr": "node_memory_MemFree_bytes{instance=\"$node1\",job=\"$job\"}",
+          "expr": "node_memory_MemFree_bytes{instance=\"$node4\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "RAM Free",
@@ -1758,7 +1687,7 @@
           "step": 240
         },
         {
-          "expr": "(node_memory_SwapTotal_bytes{instance=\"$node1\",job=\"$job\"} - node_memory_SwapFree_bytes{instance=\"$node1\",job=\"$job\"})",
+          "expr": "(node_memory_SwapTotal_bytes{instance=\"$node4\",job=\"$job\"} - node_memory_SwapFree_bytes{instance=\"$node4\",job=\"$job\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "SWAP Used",
@@ -1786,7 +1715,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:259",
           "format": "bytes",
           "label": "",
           "logBase": 1,
@@ -1795,7 +1723,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:260",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1885,7 +1812,6 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:685",
           "alias": "/.*trans.*/",
           "transform": "negative-Y"
         }
@@ -1895,7 +1821,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(node_network_receive_bytes_total{instance=\"$node1\",job=\"$job\"}[$__rate_interval])*8",
+          "expr": "rate(node_network_receive_bytes_total{instance=\"$node4\",job=\"$job\"}[$__rate_interval])*8",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "recv {{device}}",
@@ -1903,7 +1829,7 @@
           "step": 240
         },
         {
-          "expr": "rate(node_network_transmit_bytes_total{instance=\"$node1\",job=\"$job\"}[$__rate_interval])*8",
+          "expr": "rate(node_network_transmit_bytes_total{instance=\"$node4\",job=\"$job\"}[$__rate_interval])*8",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "trans {{device}} ",
@@ -1931,7 +1857,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:692",
           "format": "bps",
           "label": null,
           "logBase": 1,
@@ -1940,7 +1865,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:693",
           "format": "pps",
           "label": "",
           "logBase": 1,
@@ -1955,7 +1879,7 @@
       }
     }
   ],
-  "refresh": false,
+  "refresh": "5s",
   "schemaVersion": 27,
   "style": "dark",
   "tags": [
@@ -2202,7 +2126,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {
@@ -2233,5 +2157,5 @@
   "timezone": "browser",
   "title": "NGINX Unit / NGINX / Apache Dashboard",
   "uid": "basic-dashboard",
-  "version": 4
+  "version": 1
 }

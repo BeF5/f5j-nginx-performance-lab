@@ -7,10 +7,10 @@ services:
      - "8089:8089"
     volumes:
       - ./:/mnt/locust
-    command: -f /mnt/locust/senario/wp_top.py --master
+    command: -f /mnt/locust/senario/html.py --master
 
   worker:
     image: locustio/locust
     volumes:
       - ./:/mnt/locust
-    command: -f /mnt/locust/senario/wp_top.py --worker --master-host master
+    command: -f /mnt/locust/senario/html.py --worker --master-host master

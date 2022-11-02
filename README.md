@@ -50,7 +50,7 @@ ansible-galaxy install nginxinc.nginx_unit
 ### インストール
 
 ```
-ansible-playbook -i inventory/hosts -l host1 nunit-wp-setup.yaml
+ansible-playbook -i inventory/hosts -l host1 web-servers/nunit-wp-setup.yaml
 ```
 
 ## 2. NGINX Plus + Wordpress のインストール
@@ -130,11 +130,19 @@ ansible-playbook -i inventory/hosts performance-components/start-node-exporter.y
   - http://**locust IP**:8089
 
 - CLI を利用する場合
-  - Locust のホストで以下のようなコマンドを実行する
+
+  - Locust のホストで以下のようなコマンドを実行する。Locustへトラフィック送付が可能
 
     ```
     docker run -d -v "/root/f5j-nginx-performance-lab/docker-compose/locust:/mnt/locust" locustio/locust --config /mnt/locust/config/http_10-1-1-4_html.conf -f /mnt/locust/senario/html.py --html /mnt/locust/result/`date "+%Y-%m-%d-%H%M%S"`_http_10-1-1-4_html_result.html
     ```
+
+  - 作業ホストで以下コマンドを実行する。すべてのWebサーバを送付するCLIコマンドが実行できる
+
+  　```
+    ansible-playbook -i inventory/hosts -l locust load-generate/load-http-html-allservers.yaml  
+    ```
+
 
 ### Grafana / Prometheus への接続
 
