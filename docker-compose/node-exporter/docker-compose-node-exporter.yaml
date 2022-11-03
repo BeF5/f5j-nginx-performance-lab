@@ -9,3 +9,4 @@ services:
       - /proc:/host/proc
       - /sys:/host/sys
       - /:/rootfs
+    restart: always

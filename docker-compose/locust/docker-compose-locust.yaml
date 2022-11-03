@@ -8,9 +8,11 @@ services:
     volumes:
       - ./:/mnt/locust
     command: -f /mnt/locust/senario/html.py --master
+    restart: always
 
   worker:
     image: locustio/locust
     volumes:
       - ./:/mnt/locust
     command: -f /mnt/locust/senario/html.py --worker --master-host master
+    restart: always
