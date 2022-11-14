@@ -72,18 +72,21 @@ ansible-galaxy collection install nginxinc.nginx_core
 ### インストール
 
 ```
+# cd ~/f5j-nginx-performance-lab/ansible/
 ansible-playbook -i inventory/hosts -l host2 web-servers/nplus-wp-setup.yaml
 ```
 
 ## 3. Apache + Wordpress のインストール
 
 ```
+# cd ~/f5j-nginx-performance-lab/ansible/
 ansible-playbook -i inventory/hosts -l host3 web-servers/apache-wp-setup.yaml
 ```
 
 ## 4. Locust の実行
 
 ```
+# cd ~/f5j-nginx-performance-lab/ansible/
 ansible-playbook -i inventory/hosts -l locust performance-components/start-locust.yaml
 ```
 
@@ -92,12 +95,14 @@ ansible-playbook -i inventory/hosts -l locust performance-components/start-locus
 ### Grafana + Prometheus の実行
 
 ```
+# cd ~/f5j-nginx-performance-lab/ansible/
 ansible-playbook -i inventory/hosts -l monitor performance-components/start-monitor.yaml
 ```
 
 ### 各HostにNode Exporterの実行
 
 ```
+# cd ~/f5j-nginx-performance-lab/ansible/
 ansible-playbook -i inventory/hosts performance-components/start-node-exporter.yaml  
 ```
 
