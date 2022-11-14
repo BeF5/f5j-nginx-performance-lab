@@ -139,7 +139,7 @@ ansible-playbook -i inventory/hosts performance-components/start-node-exporter.y
 
   - 作業ホストで以下コマンドを実行する。すべてのWebサーバを送付するCLIコマンドが実行できる
 
-  　```
+    ```
     ansible-playbook -i inventory/hosts -l locust load-generate/load-http-html-allservers.yaml  
     ```
 
