@@ -1,8 +1,8 @@
 import time
-from locust import HttpUser, task, between
+from locust import HttpUser, task, between, constant_throughput, constant
 
 class QuickstartUser(HttpUser):
-#    wait_time = between(1, 5)
+    wait_time = constant_throughput(1)
 
     @task
     def hello_world(self):
