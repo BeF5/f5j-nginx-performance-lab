@@ -10,6 +10,6 @@
 
 - name: Start Locust
   shell: |
-    docker-compose -f locust/docker-compose-locust.yaml up -d --scale worker=4
+    docker-compose -f locust/docker-compose-locust.yaml up -d --scale worker=8
   args:
     chdir: ~/f5j-nginx-performance-lab/docker-compose
