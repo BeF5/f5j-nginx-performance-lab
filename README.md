@@ -50,6 +50,7 @@ ansible-galaxy install nginxinc.nginx_unit
 ### インストール
 
 ```
+# cd ~/f5j-nginx-performance-lab/ansible/
 ansible-playbook -i inventory/hosts -l host1 web-servers/nunit-wp-setup.yaml
 ```
 
