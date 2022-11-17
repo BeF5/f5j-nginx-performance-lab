@@ -4,7 +4,6 @@ user www-data;
 worker_processes  auto;
 worker_rlimit_nofile 10240;
 
-
 error_log  /var/log/nginx/error.log notice;
 pid        /var/run/nginx.pid;
 
@@ -14,7 +13,6 @@ events {
     accept_mutex       off;
     multi_accept       off;
 }
-
 
 
 http {

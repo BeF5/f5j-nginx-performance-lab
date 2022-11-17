@@ -7,12 +7,12 @@ services:
      - "8089:8089"
     volumes:
       - ./:/mnt/locust
-    command: -f /mnt/locust/senario/html.py --master
+    command: -f /mnt/locust/senario/webui_html.py --master
     restart: always
 
   worker:
     image: locustio/locust
     volumes:
       - ./:/mnt/locust
-    command: -f /mnt/locust/senario/html.py --worker --master-host master
+    command: -f /mnt/locust/senario/webui_html.py --worker --master-host master
     restart: always
