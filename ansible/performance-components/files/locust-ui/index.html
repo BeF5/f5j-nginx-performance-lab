@@ -136,6 +136,8 @@
             <h4> {{ message }} </h4>
           </div>
 
+          <button v-on:click="updateTable" type="button" class="btn btn-secondary">Update</button>
+
           <vue-good-table :columns="columns" :rows="rows" :sort-options="{
               enabled: true,
               initialSortBy: {field: 'id', type: 'asc'}
@@ -209,21 +211,21 @@
                 // OR seach with multiple words
                 let regex = new RegExp(searchTerm.trim().replace(/\s/,'|'));
                 for ( let eachCol of this.columns) {
-                  if(regex.test(String(row[eachCol.field]))) { 
+                  if(regex.test(String(row[eachCol.field]))) {
                     //console.log(row[eachCol.field]);
-                    return true; 
+                    return true;
                   }
                 }
                 return false ;
                 */
-               
+
                 // AND search with multiple words
-                let matchCount = 0 ;
+                let matchCount = 0;
                 let searchTermAry = searchTerm.trim().split(/\s/);
-                searchTermAry.forEach( searchTermEle => {
+                searchTermAry.forEach(searchTermEle => {
                   let regex = new RegExp(searchTermEle);
-                  for ( let eachCol of this.columns) {
-                    if(regex.test(String(row[eachCol.field]))) { 
+                  for (let eachCol of this.columns) {
+                    if (regex.test(String(row[eachCol.field]))) {
                       //console.log(row[eachCol.field]);
                       matchCount++;
                       break;
@@ -231,6 +233,21 @@
                   }
                 })
                 return searchTermAry.length == matchCount ? true : false;
+              },
+              updateTable: function () {
+                axios.get('/api/locust-result/')
+                  .then(function (response) {
+                    if (0 == response.data.length) {
+                      this.errordetail = '';
+                      this.errortext = 'NO RESULT'
+                    } else {
+                      this.rows = response.data;
+                    }
+                  }.bind(this))
+                  .catch(function (error) {
+                    this.errordetail = error.message;
+                    this.errortext = 'ERROR'
+                  }.bind(this))
               }
             },
             mounted: function () {
