@@ -163,4 +163,7 @@ ansible-playbook -i inventory/hosts performance-components/start-node-exporter.y
   - http://**monitor host IP**:9090
 
 
+### Grafana Dasbharod
 
+- このラボでは各WebサーバのCPU/Memoryの状況を確認します
+- [dashboard](https://github.com/BeF5/f5j-nginx-performance-lab/tree/master/dashboard) をImportすることにより容易に確認できます
